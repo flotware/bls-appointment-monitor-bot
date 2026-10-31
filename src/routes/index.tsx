@@ -23,7 +23,7 @@ function Overview() {
   const confirmed = activitySeries.reduce((a, d) => a + d.confirmed, 0);
   return (
     <>
-      <PageHeader title="Good evening, Amaka" description="Here's what's happening across your BLS monitoring workspace."
+      <PageHeader title="Good morning, Miguel" description="Here's what's happening across your BLS monitoring workspace."
         actions={<><Button variant="outline" asChild><Link to="/analytics">View analytics</Link></Button><Button asChild><Link to="/configuration">New configuration</Link></Button></>} />
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
         <StatCard label="Total applicants" value={initialApplicants.length} icon={Users} hint="3 family groups" />

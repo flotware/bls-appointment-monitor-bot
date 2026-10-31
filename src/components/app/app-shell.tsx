@@ -46,9 +46,9 @@ function SidebarBody({ onNavigate }: { onNavigate?: () => void }) {
       </nav>
       <div className="border-t border-sidebar-border p-4">
         <div className="flex items-center gap-3">
-          <div className="grid size-8 place-items-center rounded-full bg-sidebar-accent text-xs font-semibold">AO</div>
+          <div className="grid size-8 place-items-center rounded-full bg-sidebar-accent text-xs font-semibold">MO</div>
           <div className="min-w-0 flex-1">
-            <div className="truncate text-xs font-semibold">Amaka Obi</div>
+            <div className="truncate text-xs font-semibold">Miguel Obi</div>
             <div className="truncate text-[0.7rem] text-sidebar-muted">Admin · Horizon Travels</div>
           </div>
           <Link to="/login" aria-label="Sign out" className="text-sidebar-muted hover:text-sidebar-foreground"><LogOut className="size-4" /></Link>
