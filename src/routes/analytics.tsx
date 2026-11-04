@@ -48,7 +48,7 @@ function AnalyticsPage() {
           <ul className="divide-y text-sm">{notificationChannels.map((c) => <li key={c.channel} className="flex justify-between py-2.5"><span>{c.channel}</span><span className="tabular-nums text-muted-foreground">{c.sent} sent · {c.failed} failed</span></li>)}</ul>
         </Panel>
         <Panel title="Task performance">
-          <ul className="space-y-3 text-sm">{initialTasks.map((t, i) => { const rate = [96, 88, 41][i]; return (
+          <ul className="space-y-3 text-sm">{initialTasks.map((t, i) => { const rate = [96, 88, 41][i] ?? 0; return (
             <li key={t.id}><div className="mb-1 flex justify-between"><span className="truncate">{t.label}</span><span className="tabular-nums text-muted-foreground">{rate}% uptime</span></div>
               <div className="h-2 rounded-full bg-muted"><div className={`h-2 rounded-full ${rate > 80 ? "bg-success" : "bg-destructive"}`} style={{ width: `${rate}%` }} /></div></li>); })}</ul>
         </Panel>
