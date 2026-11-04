@@ -80,11 +80,66 @@ export const COUNTRIES: Record<string, Record<string, string[]>> = {
     "Tel Aviv": ["BLS Visa Application Centre – Tel Aviv"],
     Haifa: ["BLS Visa Application Centre – Haifa"],
   },
+  Spain: {
+    Madrid: ["BLS Visa Application Centre – Madrid", "BLS Visa Application Centre – Madrid (Alcalá)"],
+    Barcelona: ["BLS Visa Application Centre – Barcelona"],
+    Malaga: ["BLS Visa Application Centre – Malaga"],
+    Valencia: ["BLS Visa Application Centre – Valencia"],
+  },
+  Nigeria: {
+    Lagos: ["BLS Visa Application Centre – Lagos (Victoria Island)", "BLS Visa Application Centre – Lagos (Ikeja)"],
+    Abuja: ["BLS Visa Application Centre – Abuja"],
+    "Port Harcourt": ["BLS Visa Application Centre – Port Harcourt"],
+  },
+  India: {
+    "New Delhi": ["BLS Visa Application Centre – New Delhi"],
+    Mumbai: ["BLS Visa Application Centre – Mumbai"],
+    Chennai: ["BLS Visa Application Centre – Chennai"],
+    Kolkata: ["BLS Visa Application Centre – Kolkata"],
+    Bangalore: ["BLS Visa Application Centre – Bangalore"],
+    Hyderabad: ["BLS Visa Application Centre – Hyderabad"],
+    Ahmedabad: ["BLS Visa Application Centre – Ahmedabad"],
+    Pune: ["BLS Visa Application Centre – Pune"],
+  },
+  Ghana: {
+    Accra: ["BLS Visa Application Centre – Accra"],
+  },
+  Egypt: {
+    Cairo: ["BLS Visa Application Centre – Cairo", "BLS Visa Application Centre – Cairo (Heliopolis)"],
+    Alexandria: ["BLS Visa Application Centre – Alexandria"],
+  },
+  Morocco: {
+    Casablanca: ["BLS Visa Application Centre – Casablanca"],
+    Rabat: ["BLS Visa Application Centre – Rabat"],
+    Tangier: ["BLS Visa Application Centre – Tangier"],
+    Marrakesh: ["BLS Visa Application Centre – Marrakesh"],
+  },
+  Kenya: {
+    Nairobi: ["BLS Visa Application Centre – Nairobi"],
+    Mombasa: ["BLS Visa Application Centre – Mombasa"],
+  },
+  Philippines: {
+    Manila: ["BLS Visa Application Centre – Manila", "BLS Visa Application Centre – Manila (Makati)"],
+    Cebu: ["BLS Visa Application Centre – Cebu"],
+  },
+  Indonesia: {
+    Jakarta: ["BLS Visa Application Centre – Jakarta"],
+    Surabaya: ["BLS Visa Application Centre – Surabaya"],
+    Denpasar: ["BLS Visa Application Centre – Denpasar (Bali)"],
+  },
+  Bangladesh: {
+    Dhaka: ["BLS Visa Application Centre – Dhaka", "BLS Visa Application Centre – Dhaka (Gulshan)"],
+    Chattogram: ["BLS Visa Application Centre – Chattogram"],
+  },
+  Algeria: {
+    Algiers: ["BLS Visa Application Centre – Algiers"],
+    Oran: ["BLS Visa Application Centre – Oran"],
+  },
 };
 
 export const VISA_CATEGORIES = ["Schengen – Tourism", "Schengen – Business", "Student (National D)", "Work Permit", "Family Reunion", "Transit"];
 export const APPOINTMENT_TYPES = ["Individual", "Family", "Premium Lounge", "Prime Time"];
-export const AIRPORTS = ["DXB – Dubai", "AUH – Abu Dhabi", "KHI – Karachi", "ISB – Islamabad", "LHE – Lahore", "IST – Istanbul", "AYT – Antalya", "TLV – Tel Aviv", "MAD – Madrid", "LIS – Lisbon", "FCO – Rome", "BUD – Budapest"];
+export const AIRPORTS = ["DXB – Dubai", "AUH – Abu Dhabi", "KHI – Karachi", "ISB – Islamabad", "LHE – Lahore", "IST – Istanbul", "AYT – Antalya", "TLV – Tel Aviv", "MAD – Madrid", "LIS – Lisbon", "FCO – Rome", "BUD – Budapest", "BCN – Barcelona", "LOS – Lagos", "ABV – Abuja", "DEL – New Delhi", "BOM – Mumbai", "MAA – Chennai", "ACC – Accra", "CAI – Cairo", "CMN – Casablanca", "RAK – Marrakesh", "NBO – Nairobi", "MBA – Mombasa", "MNL – Manila", "CEB – Cebu", "CGK – Jakarta", "SUB – Surabaya", "DPS – Denpasar", "DAC – Dhaka", "ALG – Algiers", "ORN – Oran"];
 
 export const initialConfigs: AppointmentConfig[] = [
   { id: "cfg-1", name: "Adeyemi family – Spain tourism", country: "United Arab Emirates", city: "Dubai", centre: "BLS Visa Application Centre – Dubai (Wafi Mall)", zip: "00000", address: "Office 1204, Sheikh Zayed Rd, Dubai", visaCategory: "Schengen – Tourism", appointmentType: "Family", applicants: 4, slots: 4, dateFrom: "2026-11-10", dateTo: "2026-11-28", timeFrom: "08:00", timeTo: "13:00", flightDate: "2026-12-18", flightTime: "22:40", departureAirport: "DXB – Dubai", destinationAirport: "MAD – Madrid", notes: "Christmas holiday trip. Two minors." },
