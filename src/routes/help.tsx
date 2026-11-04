@@ -12,7 +12,7 @@ export const Route = createFileRoute("/help")({
   component: HelpPage,
 });
 
-const faqs = [
+const faqs: [string, string][] = [
   ["What's the difference between a detected slot and a confirmed booking?", "A detected slot is availability seen on the BLS portal. It only becomes a confirmed booking after your team books it and marks it confirmed in Manual review."],
   ["Why do all integrations say Not connected?", "Live connections to the BLS portal, proxies, cloud worker and notification channels haven't been set up yet. Add credentials in Developer Settings once they're available."],
   ["How do I group a family?", "When adding or editing an applicant, type the same family/group name for each member. Use the filter chips on the Applicants page to view a group."],

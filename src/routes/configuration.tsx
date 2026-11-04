@@ -24,7 +24,7 @@ function Field({ label, children, className }: { label: string; children: React.
 
 function Pick({ value, onChange, options, placeholder, disabled }: { value: string; onChange: (v: string) => void; options: string[]; placeholder: string; disabled?: boolean }) {
   return (
-    <Select value={value} onValueChange={onChange} disabled={disabled}>
+    <Select value={value} onValueChange={onChange} disabled={disabled ?? false}>
       <SelectTrigger className="w-full"><SelectValue placeholder={placeholder} /></SelectTrigger>
       <SelectContent>{options.map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}</SelectContent>
     </Select>
@@ -35,8 +35,8 @@ function ConfigurationPage() {
   const [configs, setConfigs] = useState(initialConfigs);
   const [form, setForm] = useState<AppointmentConfig>(empty);
   const set = <K extends keyof AppointmentConfig>(k: K, v: AppointmentConfig[K]) => setForm((f) => ({ ...f, [k]: v }));
-  const cities = form.country ? Object.keys(COUNTRIES[form.country]) : [];
-  const centres = form.country && form.city ? COUNTRIES[form.country][form.city] ?? [] : [];
+  const cities = form.country ? Object.keys(COUNTRIES[form.country] ?? {}) : [];
+  const centres = form.country && form.city ? (COUNTRIES[form.country]?.[form.city] ?? []) : [];
 
   const save = () => {
     if (!form.name || !form.country || !form.city || !form.centre || !form.visaCategory) {
