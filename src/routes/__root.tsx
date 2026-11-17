@@ -6,15 +6,17 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  useNavigate,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import { AppShell } from "@/components/app/app-shell";
 import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { supabase } from "@/integrations/supabase/client";
 
 function NotFoundComponent() {
   return (
@@ -119,12 +121,45 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const isAuth = useRouterState({ select: (s) => s.location.pathname === "/login" });
+  const navigate = useNavigate();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAuth = ["/login", "/reset-password"].includes(pathname);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [authReady, setAuthReady] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+      if (!active) return;
+      setUserId(session?.user.id ?? null);
+      setAuthReady(true);
+    });
+
+    void supabase.auth.getUser().then(({ data, error }) => {
+      if (!active) return;
+      setUserId(error ? null : data.user?.id ?? null);
+      setAuthReady(true);
+    });
+
+    return () => {
+      active = false;
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!authReady) return;
+    if (!userId && !isAuth) void navigate({ to: "/login", replace: true });
+    if (userId && pathname === "/login") void navigate({ to: "/", replace: true });
+  }, [authReady, isAuth, navigate, pathname, userId]);
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      {isAuth ? <Outlet /> : <AppShell><Outlet /></AppShell>}
+      {isAuth ? <Outlet /> : !authReady || !userId ? (
+        <div className="grid min-h-screen place-items-center bg-background text-sm text-muted-foreground">Loading your workspace…</div>
+      ) : <AppShell><Outlet /></AppShell>}
       <Toaster richColors position="top-right" />
     </QueryClientProvider>
   );

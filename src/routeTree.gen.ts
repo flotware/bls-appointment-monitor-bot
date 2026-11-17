@@ -19,6 +19,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as LogsRouteImport } from './routes/logs'
 import { Route as MonitoringRouteImport } from './routes/monitoring'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as SettingsRouteImport } from './routes/settings'
 
 const IndexRoute = IndexRouteImport.update({
@@ -71,6 +72,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
   path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/logs': typeof LogsRoute
   '/monitoring': typeof MonitoringRoute
   '/notifications': typeof NotificationsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/settings': typeof SettingsRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/logs': typeof LogsRoute
   '/monitoring': typeof MonitoringRoute
   '/notifications': typeof NotificationsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/settings': typeof SettingsRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/logs': typeof LogsRoute
   '/monitoring': typeof MonitoringRoute
   '/notifications': typeof NotificationsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/settings': typeof SettingsRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/logs'
     | '/monitoring'
     | '/notifications'
+    | '/reset-password'
     | '/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/logs'
     | '/monitoring'
     | '/notifications'
+    | '/reset-password'
     | '/settings'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/logs'
     | '/monitoring'
     | '/notifications'
+    | '/reset-password'
     | '/settings'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   LogsRoute: typeof LogsRoute
   MonitoringRoute: typeof MonitoringRoute
   NotificationsRoute: typeof NotificationsRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   SettingsRoute: typeof SettingsRoute
 }
 
@@ -245,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   LogsRoute: LogsRoute,
   MonitoringRoute: MonitoringRoute,
   NotificationsRoute: NotificationsRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   SettingsRoute: SettingsRoute,
 }
 export const routeTree = rootRouteImport

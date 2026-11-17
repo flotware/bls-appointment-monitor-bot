@@ -1,2 +1,7 @@
 - [x] Verify initial BLS dashboard build (build log, tests, preview screenshot)
 - [x] Fold in update brief: UAE/Pakistan/Turkey/Israel countries+cities, Amaka→Miguel, full team & permissions management
+- [x] Audit prototype and enable Lovable Cloud, email authentication, Google sign-in, and Sign in with Lovable
+- [ ] Replace demo sign-in with verified account flows and profile/workspace onboarding
+- [ ] Connect applicants and appointment configurations to persistent, organization-scoped data
+- [ ] Replace sample monitoring, dashboard, logs, analytics, notification, integration, and team states with truthful backend status
+- [ ] Verify signed-in flows and create a deployment-readiness report; note missing third-party access and VPS decision
